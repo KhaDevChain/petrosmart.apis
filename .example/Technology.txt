@@ -1,0 +1,7 @@
+- Spring boot
+- Java : 21.0.4
+- Redis
+- Docker : 27.0.3
+- Portainer
+- CI/CD
+- AWS
