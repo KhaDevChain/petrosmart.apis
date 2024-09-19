@@ -31,11 +31,11 @@ public class FuelTank implements Serializable {
     @Column(name = "indexTank", columnDefinition = "varchar(3)", nullable = false)
     private String IndexTank;
     
-    @Column(name = "totalLit", columnDefinition = "float", nullable = false)
-    private float TotalLit;
+    @Column(name = "maximunLit", columnDefinition = "float", nullable = false)
+    private float MaximunLit;
 
-    @Column(name = "restLit", columnDefinition = "float", nullable = false)
-    private float RestLit;
+    @Column(name = "currentLit", columnDefinition = "float", nullable = false)
+    private float CurrentLit;
 
     @Column(name = "createdAt", columnDefinition = "datetime")
     @Temporal(TemporalType.DATE)

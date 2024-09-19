@@ -42,6 +42,9 @@ public class Permission implements Serializable{
     @Column(name = "description", columnDefinition = "varchar(30)", nullable = false)
     private String Description;
 
+    @Column(name = "activated", columnDefinition = "boolean")
+    private boolean Activated = false;
+
     @Column(name = "createdAt", columnDefinition = "datetime")
     @Temporal(TemporalType.DATE)
     private Date CreatedAt = new Date();

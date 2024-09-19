@@ -45,6 +45,9 @@ public class Employee implements Serializable{
     @Column(name = "address", columnDefinition = "varchar(100)")
     private String Address;
 
+    @Column(name = "activated", columnDefinition = "boolean")
+    private boolean Activated = false;
+
     @Column(name = "createdAt", columnDefinition = "datetime")
     @Temporal(TemporalType.DATE)
     private Date CreatedAt = new Date();
@@ -52,9 +55,9 @@ public class Employee implements Serializable{
     // khóa ngoại
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "suppierId")
+    @JoinColumn(name = "chainId")
     @JsonIgnore
-    private Supplier supplier;
+    private Chain chain;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "stationId")
