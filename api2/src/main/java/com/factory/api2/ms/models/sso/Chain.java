@@ -1,10 +1,13 @@
 package com.factory.api2.ms.models.sso;
 
 import java.util.Date;
+import java.util.List;
+import java.util.ArrayList;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -16,13 +19,14 @@ import lombok.Data;
  */
 @Entity
 @Table(
-    name = "suppliers",
+    name = "chains",
     uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"sku", "supplierName"})
+        @UniqueConstraint(columnNames = {"sku", "chainName"}),
+        @UniqueConstraint(columnNames = {"sku", "chainName", "director"}),
     }
 )
 @Data
-public class Supplier {
+public class Chain {
     @Id
     @Column(name = "uniqueId", columnDefinition = "varchar(50)")
     private String UniqueId;
@@ -30,23 +34,20 @@ public class Supplier {
     @Column(name = "sku", columnDefinition = "varchar(50)", nullable = false, unique = true)
     private String SKU;
 
-    @Column(name = "supplierName", columnDefinition = "varchar(150)", nullable = false)
-    private String SupplierName;
+    @Column(name = "chainName", columnDefinition = "varchar(70)", nullable = false, unique = true)
+    private String ChainName;
 
-    @Column(name = "phone", columnDefinition = "varchar(15)")
-    private String Phone;
+    @Column(name = "director", columnDefinition = "varchar(70)")
+    private String Director;
 
-    @Column(name = "email", columnDefinition = "varchar(70)")
-    private String Email;
-
-    // data dạng list <fuelId,fuelName>;<fuelId,fuelName>
-    @Column(name = "fuels", columnDefinition = "varchar(255)")
-    private String FuelsList;
+    @Column(name = "activated", columnDefinition = "boolean")
+    private boolean Activated = false;
 
     @Column(name = "createdAt", columnDefinition = "datetime")
     @Temporal(TemporalType.DATE)
     private Date CreatedAt = new Date();
 
-    @Column(name = "activated", columnDefinition = "boolean")
-    private boolean Activated = false;
+    // 1 chuỗi sẽ có nhiều trạm
+    @OneToMany(mappedBy = "chain")
+    List<Station> stations = new ArrayList<Station>();
 }

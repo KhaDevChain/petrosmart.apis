@@ -20,7 +20,8 @@ import lombok.Data;
  */
 @Entity
 @Table(name = "fuelrectanglars", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"totalAClock", "totalBClock"})
+    @UniqueConstraint(columnNames = {"totalAClock", "totalBClock"}),
+    @UniqueConstraint(columnNames = {"uniqueId", "totalAClock", "totalBClock"}),
 })
 @Data
 public class FuelRectangular implements Serializable {
@@ -40,6 +41,9 @@ public class FuelRectangular implements Serializable {
     @Column(name = "createdAt", columnDefinition = "datetime")
     @Temporal(TemporalType.DATE)
     private Date CreatedAt = new Date();
+
+    @Column(name = "activated", columnDefinition = "boolean")
+    private boolean Activated = false;
 
     @OneToMany(mappedBy = "fuelRectangular")
     List<FuelPipe> fuelPipes = new ArrayList<FuelPipe>();

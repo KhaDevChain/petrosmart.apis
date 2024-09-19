@@ -1,7 +1,5 @@
 package com.factory.api2.ms.models.sso;
 
-import java.io.Serializable;
-
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
@@ -25,7 +23,7 @@ import lombok.Data;
     @UniqueConstraint(columnNames = {"roleName", "rankest", "rankOrther"}),
 })
 @Data
-public class Role implements Serializable{
+public class Role {
     @Id
     @Column(name = "uniqueId", columnDefinition = "varchar(50)")
     private String UniqueId;

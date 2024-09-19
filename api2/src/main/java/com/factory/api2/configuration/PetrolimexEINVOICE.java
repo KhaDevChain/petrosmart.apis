@@ -18,36 +18,36 @@ import jakarta.persistence.EntityManagerFactory;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories (
-    entityManagerFactoryRef = "ssoEntityManagerFactory",
-    transactionManagerRef = "ssoTransactionManager",
-    basePackages = {"com.factory.api2.repositories.sso"}
+    entityManagerFactoryRef = "einvoiceEntityManagerFactory",
+    transactionManagerRef = "einvoiceTransactionManager",
+    basePackages = {"com.factory.api2.repositories.einvoice"}
 )
-public class PetrolimexSSO {
-    @Bean(name = "ssoDataSource")
-    public DataSource ssoDataSource() {
+public class PetrolimexEINVOICE {
+    @Bean(name = "einvoiceDataSource")
+    public DataSource einvoiceDataSource() {
         return DataSourceBuilder.create()
-                .url("jdbc:mysql://localhost:3306/petrolimex_sso")
+                .url("jdbc:mysql://localhost:3306/petrolimex_einvoice")
                 .username("root")
                 .password("0907718993")
                 .driverClassName("com.mysql.cj.jdbc.Driver")
                 .build();
     }
 
-    @Bean(name = "ssoEntityManagerFactory")
-    public LocalContainerEntityManagerFactoryBean ssoEntityManagerFactory (
+    @Bean(name = "einvoiceEntityManagerFactory")
+    public LocalContainerEntityManagerFactoryBean einvoiceEntityManagerFactory (
         EntityManagerFactoryBuilder builder,
-        @Qualifier("ssoDataSource") DataSource dataSource) 
+        @Qualifier("einvoiceDataSource") DataSource dataSource) 
     {
         return builder
                 .dataSource(dataSource)
-                .packages("com.factory.api2.ms.models.sso")
-                .persistenceUnit("sso")
+                .packages("com.factory.api2.ms.models.einvoice")
+                .persistenceUnit("einvoice")
                 .build();
     }
 
-    @Bean(name = "ssoTransactionManager")
-    public PlatformTransactionManager ssoTransactionManager(
-        @Qualifier("ssoEntityManagerFactory") EntityManagerFactory entityManagerFactory) 
+    @Bean(name = "einvoiceTransactionManager")
+    public PlatformTransactionManager einvoiceTransactionManager(
+        @Qualifier("einvoiceEntityManagerFactory") EntityManagerFactory entityManagerFactory) 
     {
         return new JpaTransactionManager(entityManagerFactory);
     }

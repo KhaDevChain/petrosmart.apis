@@ -42,7 +42,7 @@ public class PetrolimexOPERATION {
         @Qualifier("operationDataSource") DataSource dataSource) 
     {
         return builder.dataSource(dataSource)
-                    .packages("com.factory.api2.mvvm.models.operation")
+                    .packages("com.factory.api2.ms.models.operation")
                     .persistenceUnit("operation")
                     .build();
     }
