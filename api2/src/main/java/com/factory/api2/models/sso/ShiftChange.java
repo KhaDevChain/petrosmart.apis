@@ -1,6 +1,6 @@
 package com.factory.api2.models.sso;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,5 +31,5 @@ public class ShiftChange {
 
     @Column(name = "createdAt", columnDefinition = "datetime")
     @Temporal(TemporalType.DATE)
-    private Date CreatedAt = new Date();
+    private LocalDateTime CreatedAt = LocalDateTime.now();
 }

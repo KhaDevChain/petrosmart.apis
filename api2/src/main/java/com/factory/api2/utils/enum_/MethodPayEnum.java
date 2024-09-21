@@ -19,5 +19,10 @@ public enum MethodPayEnum {
     /**
      * Ghi nợ
      */
-    DEBT
+    DEBT,
+
+    /**
+     * Đánh dấu
+     */
+    MARK
 }

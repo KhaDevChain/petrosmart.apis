@@ -1,8 +1,8 @@
 package com.factory.api2.models.operation;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -59,7 +59,7 @@ public class Transaction implements Serializable {
 
     @Column(name = "exportedAt", columnDefinition = "datetime")
     @Temporal(TemporalType.DATE)
-    private Date ExportedAt = null;
+    private LocalDateTime ExportedAt = LocalDateTime.now();
 
     @OneToMany(mappedBy = "transaction")
     List<Order> orders = new ArrayList<Order>();

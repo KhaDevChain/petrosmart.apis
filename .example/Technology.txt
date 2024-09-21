@@ -6,18 +6,32 @@
 - CI/CD
 - AWS
 
-/*
+## QUY LUẬT VẬN HÀNG
+
+    [A] 
     Khi một chuỗi nào đó đăng ký
     - B1: Cấp một nhánh riêng của họ trên git
     - B2: Cấp một mysql riêng cho họ
     - B3: Có một program chạy riêng để quản lý các chuỗi đó
     
-    Mỗi năm phải vào trong 
-    application để chỉnh operation.year thành năm hiện tại
+    [B]
+    Mỗi năm phải vào trong application để chỉnh operation.year thành năm hiện tại
     
-
-    Đối với phần Order sau khi chọn 1 list, gọi 1 api để xuất qua Cổng HDDT
-    họ sẽ trả về 1 cái key tra cứu ... mình lấy key tra cứu đó tra cứu thử coi có xuất thành công chưa
-    nếu thành công thì mới cho lưu trong Transaction
+    [C]
+    Đối với phần Order sau khi chọn 1 list, gọi 1 api để xuất qua Cổng HDDT họ sẽ trả về 1 cái key tra cứu ... 
+    mình lấy key tra cứu đó tra cứu thử coi có xuất thành công chưa nếu thành công thì mới cho lưu trong Transaction
     Ngược lại, chưa có thì không cho xuất mà cảnh báo là xuất chưa được ko cho cập nhật việc xuất
-*/
+
+## QUY LUẬT PHÂN TÁCH
+
+    [A]
+    API sẽ được thiết kế riêng trong 1 project và nó sẽ có domain: /apis/v1/project/
+    API sẽ chỉ lưu thông tin trong database và có cơ chế riêng để tạo các api chuyên cho einvoice
+
+    [B]
+    EInvoice sẽ được thiết kế riêng trong 1 project khác và sẽ chỉ nhận được data từ apis chuyên einvoice trên để
+    chuyển lên thuế
+
+    [C]
+    API cần có chế độ xử lý các operation theo các năm
+

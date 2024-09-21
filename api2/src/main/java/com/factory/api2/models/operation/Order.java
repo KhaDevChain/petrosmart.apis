@@ -1,7 +1,7 @@
 package com.factory.api2.models.operation;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -33,16 +33,16 @@ public class Order implements Serializable{
 
     @Column(name = "createdAt", columnDefinition = "datetime")
     @Temporal(TemporalType.DATE)
-    private Date CreatedAt = new Date();
+    private LocalDateTime CreatedAt = LocalDateTime.now();
 
     // update này là cho update phương thức thanh toán, đánh dấu khách hàng
     @Column(name = "updatedAt", columnDefinition = "datetime")
     @Temporal(TemporalType.DATE)
-    private Date UpdatedAt = null;
+    private LocalDateTime UpdatedAt = LocalDateTime.now();
 
     @Column(name = "exportedAt", columnDefinition = "datetime")
     @Temporal(TemporalType.DATE)
-    private Date ExportedAt = null;
+    private LocalDateTime ExportedAt = LocalDateTime.now();
 
     // giao dịch của trạm nào
     @Column(name = "stationId", columnDefinition = "varchar(50)", nullable = false)

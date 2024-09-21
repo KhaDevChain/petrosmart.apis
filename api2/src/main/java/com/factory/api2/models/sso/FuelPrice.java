@@ -1,7 +1,7 @@
 package com.factory.api2.models.sso;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -30,7 +30,7 @@ public class FuelPrice implements Serializable {
 
     @Column(name = "createdAt")
     @Temporal(TemporalType.DATE)
-    private Date CreatedAt = new Date();
+    private LocalDateTime CreatedAt = LocalDateTime.now();
 
     @Column(name = "timeAt", columnDefinition = "varchar(10)")
     private String TimeAt;

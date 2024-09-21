@@ -1,8 +1,8 @@
 package com.factory.api2.models.sso;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -43,7 +43,7 @@ public class FuelRectangular implements Serializable {
 
     @Column(name = "createdAt", columnDefinition = "datetime")
     @Temporal(TemporalType.DATE)
-    private Date CreatedAt = new Date();
+    private LocalDateTime CreatedAt = LocalDateTime.now();
 
     @Column(name = "activated", columnDefinition = "boolean")
     private boolean Activated = false;

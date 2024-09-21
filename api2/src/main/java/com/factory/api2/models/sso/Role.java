@@ -1,7 +1,7 @@
 package com.factory.api2.models.sso;
 
-import java.util.Date;
 import java.util.List;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import jakarta.persistence.Column;
@@ -41,7 +41,7 @@ public class Role {
 
     @Column(name = "createdAt", columnDefinition = "datetime")
     @Temporal(TemporalType.DATE)
-    private Date CreatedAt = new Date();
+    private LocalDateTime CreatedAt = LocalDateTime.now();
 
     @OneToMany(mappedBy = "role")
     protected List<Permission> employees = new ArrayList<Permission>();
