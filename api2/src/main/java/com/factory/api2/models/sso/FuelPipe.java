@@ -27,6 +27,7 @@ public class FuelPipe implements Serializable {
     @Column(name = "uniqueId", columnDefinition = "varchar(50)")
     private String UniqueId;
 
+    // vòi bơm số mấy
     @Column(name = "indexPipe", columnDefinition = "varchar(2)", nullable = false)
     private String IndexPipe;
 
@@ -37,16 +38,20 @@ public class FuelPipe implements Serializable {
     @Column(name = "activated", columnDefinition = "boolean")
     private boolean Activated = false;
 
+    // phương thức xuất hóa đơn
     @Column(name = "method", columnDefinition = "varchar(5)", nullable = false)
-    private String methodExport;
+    private String MethodExport;
+
+    @Column(name = "fuelName", columnDefinition = "varchar(20)", nullable = false)
+    private String FuelName;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fuelTankId")
+    @JoinColumn(name = "fuelTankId", nullable = false)
     @JsonIgnore
     private FuelTank fuelTank;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fuelRectangularId")
+    @JoinColumn(name = "fuelRectangularId", nullable = false)
     @JsonIgnore
     private FuelRectangular fuelRectangular;
 }

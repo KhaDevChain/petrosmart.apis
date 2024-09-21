@@ -20,7 +20,7 @@ import lombok.Data;
  */
 @Entity
 @Table(name = "fueltanks", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"indexTank", "fuelId", "stationId"})
+    @UniqueConstraint(columnNames = {"sku", "fuelId", "stationId"})
 })
 @Data
 public class FuelTank implements Serializable {
@@ -28,12 +28,15 @@ public class FuelTank implements Serializable {
     @Column(name = "uniqueId", columnDefinition = "varchar(50)")
     private String UniqueId;
 
-    @Column(name = "indexTank", columnDefinition = "varchar(3)", nullable = false)
-    private String IndexTank;
+    // ký hiệu bồn chứa (bồn A2, bồn C.12)
+    @Column(name = "sku", columnDefinition = "varchar(4)", nullable = false)
+    private String SKU;
     
+    // tối đa bồn chứa
     @Column(name = "maximunLit", columnDefinition = "float", nullable = false)
     private float MaximunLit;
 
+    // bồn chứa còn lại bao nhiêu lít
     @Column(name = "currentLit", columnDefinition = "float", nullable = false)
     private float CurrentLit;
 
@@ -42,10 +45,10 @@ public class FuelTank implements Serializable {
     private Date CreatedAt = new Date();
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fuelId")
+    @JoinColumn(name = "fuelId", nullable = false)
     private Fuel fuel;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "stationId")
+    @JoinColumn(name = "stationId", nullable = false)
     private Station station;
 }

@@ -15,7 +15,7 @@ import lombok.Data;
  */
 @Entity
 @Table(
-    name = "shiftChanges"
+    name = "shiftchanges"
 )
 @Data
 public class ShiftChange {
@@ -24,10 +24,10 @@ public class ShiftChange {
     private String UniqueId;
 
     @Column(name = "fromTime", columnDefinition = "varchar(12)", nullable = false)
-    private String fromTime;
+    private String FromTime;
 
     @Column(name = "toTime", columnDefinition = "varchar(12)", nullable = false)
-    private String toTime;
+    private String ToTime;
 
     @Column(name = "createdAt", columnDefinition = "datetime")
     @Temporal(TemporalType.DATE)

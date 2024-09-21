@@ -36,6 +36,6 @@ public class FuelPrice implements Serializable {
     private String TimeAt;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fuelId")
+    @JoinColumn(name = "fuelId", nullable = false)
     private Fuel fuel;
 }

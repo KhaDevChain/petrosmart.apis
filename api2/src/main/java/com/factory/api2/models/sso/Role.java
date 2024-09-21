@@ -31,9 +31,11 @@ public class Role {
     @Column(name = "roleName", columnDefinition = "varchar(70)", unique = true, nullable = false)
     private String RoleName;
 
+    // chỉ mục phân cấp từ thấp đến cao (1,2,3)
     @Column(name = "rankest", columnDefinition = "int", nullable = false)
     private int Rankest = 1;
     
+    // chỉ mục phân cấp con của rankest (1.1, 2.2, 1.2)
     @Column(name = "rankOrther", columnDefinition = "float")
     private float RankOrther;
 
