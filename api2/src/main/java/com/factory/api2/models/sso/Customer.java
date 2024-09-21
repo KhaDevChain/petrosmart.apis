@@ -31,7 +31,7 @@ public class Customer {
     @Column(name = "sku", columnDefinition = "varchar(21)", nullable = false, unique = true)
     private String SKU;
 
-    @Column(name = "customerName", columnDefinition = "varchar(45)", nullable = false, unique = true)
+    @Column(name = "customerName", columnDefinition = "varchar(45)", nullable = false)
     private String CustomerName;
 
     @Column(name = "phone", columnDefinition = "varchar(12)", nullable = false, unique = true)

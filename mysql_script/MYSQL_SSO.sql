@@ -19,7 +19,7 @@ ADD UNIQUE INDEX index_rolename_rankest_rankOrther (roleName, rankest, rankOrthe
 -- PERMISSION
 CREATE TABLE permissions (
 	uniqueId varchar(50) primary key not null,
-    groupName varchar(50) unique not null,
+    groupName varchar(20) unique not null,
     groupPermission varchar(300) not null,
     `description` varchar(20),
     createdAt datetime,
@@ -222,11 +222,13 @@ CREATE TABLE shiftChanges (
 CREATE TABLE customers (
 	uniqueId varchar(50) primary key not null,
     SKU varchar(21) not null unique,
-    customerName varchar(70) not null unique,
+    customerName varchar(45) not null,
     phone varchar(12) not null unique,
     `address` varchar(100),
     tax varchar(10),
     cardId varchar(50),
     activated boolean default false,
-    createdAt datetime
+    createdAt datetime,
+    UNIQUE KEY `index_sku_phone_customer` (SKU, phone),
+    UNIQUE KEY `index_sku_phone_name_customer` (SKU, customerName, phone),
 );
