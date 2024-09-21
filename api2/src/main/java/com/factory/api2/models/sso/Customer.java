@@ -12,7 +12,7 @@ import jakarta.persistence.UniqueConstraint;
 import lombok.Data;
 
 /**
- * chuỗi xăng
+ * Khách hàng
  */
 @Entity
 @Table(

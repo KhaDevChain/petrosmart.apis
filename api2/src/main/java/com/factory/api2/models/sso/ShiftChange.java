@@ -11,7 +11,7 @@ import jakarta.persistence.TemporalType;
 import lombok.Data;
 
 /**
- * chuỗi xăng
+ * giao ca
  */
 @Entity
 @Table(
