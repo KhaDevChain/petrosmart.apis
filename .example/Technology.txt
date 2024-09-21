@@ -26,11 +26,11 @@
 
     [A]
     API sẽ được thiết kế riêng trong 1 project và nó sẽ có domain: /apis/v1/project/
-    API sẽ chỉ lưu thông tin trong database và có cơ chế riêng để tạo các api chuyên cho einvoice
+    API sẽ chỉ lưu thông tin trong database cho einvoice
 
     [B]
-    EInvoice sẽ được thiết kế riêng trong 1 project khác và sẽ chỉ nhận được data từ apis chuyên einvoice trên để
-    chuyển lên thuế
+    EInvoice sẽ được thiết kế riêng trong 1 project khác và sẽ chỉ nhận được data từ database do apis thực hiện trên để
+    đêm về xử lý api riêng của nó để đẩy lên thuế
 
     [C]
     API cần có chế độ xử lý các operation theo các năm
