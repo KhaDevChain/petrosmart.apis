@@ -227,9 +227,11 @@ CREATE TABLE customers (
     phone varchar(12) not null unique,
     `address` varchar(100),
     tax varchar(10),
+    cccd varchar(12),
+    acNumber varchar(25),
     cardId varchar(50),
     activated boolean default false,
     createdAt datetime,
     UNIQUE KEY `index_sku_phone_customer` (SKU, phone),
-    UNIQUE KEY `index_sku_phone_name_customer` (SKU, customerName, phone),
+    UNIQUE KEY `index_sku_phone_name_customer` (SKU, customerName, phone)
 );

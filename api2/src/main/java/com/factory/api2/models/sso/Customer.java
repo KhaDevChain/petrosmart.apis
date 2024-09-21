@@ -43,6 +43,13 @@ public class Customer {
     @Column(name = "tax", columnDefinition = "varchar(10)")
     private String Tax;
 
+    @Column(name = "cccd", columnDefinition = "varchar(12)")
+    private String CCCD;
+
+    // account chuyển khoản
+    @Column(name = "acNumber", columnDefinition = "varchar(25)")
+    private String ACNumber;
+
     @Column(name = "cardId", columnDefinition = "varchar(50)")
     private String CardId;
 

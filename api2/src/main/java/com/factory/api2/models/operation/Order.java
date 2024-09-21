@@ -40,10 +40,6 @@ public class Order implements Serializable{
     @Temporal(TemporalType.DATE)
     private LocalDateTime UpdatedAt = LocalDateTime.now();
 
-    @Column(name = "exportedAt", columnDefinition = "datetime")
-    @Temporal(TemporalType.DATE)
-    private LocalDateTime ExportedAt = LocalDateTime.now();
-
     // giao dịch của trạm nào
     @Column(name = "stationId", columnDefinition = "varchar(50)", nullable = false)
     private String StationId;
@@ -73,8 +69,8 @@ public class Order implements Serializable{
     @Column(name = "methodPay", columnDefinition = "varchar(25)", nullable = false)
     private String MethodPay = "Tiền mặt";
 
-    @Column(name = "customerPhone", columnDefinition = "varchar(12)")
-    private String CustomerPhone;
+    @Column(name = "customerId", columnDefinition = "varchar(50)")
+    private String CustomerId;
 
     @Column(name = "customerCardId", columnDefinition = "varchar(25)")
     private String CustomerCardId;
@@ -94,6 +90,10 @@ public class Order implements Serializable{
 
     @Column(name = "isExported", columnDefinition = "boolean")
     private boolean IsExported = false;
+
+    @Column(name = "exportedAt", columnDefinition = "datetime")
+    @Temporal(TemporalType.DATE)
+    private LocalDateTime ExportedAt = LocalDateTime.now();
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "transactionId", nullable = true) // chưa xuất thì true

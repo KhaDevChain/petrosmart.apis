@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,10 +17,12 @@ import jakarta.persistence.TemporalType;
 import jakarta.persistence.UniqueConstraint;
 import lombok.Data;
 
+/**
+ * Transaction sử dụng nhằm giữ lại các giao dịch khi xuất hóa đơn của công nợ
+ */
 @Entity
 @Table(name = "transactions", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"billNo", "exportedAt"}),
-    @UniqueConstraint(columnNames = {"billNo", "exportedAt", "customerTax"})
+    @UniqueConstraint(columnNames = {"billNo", "createdAt"})
 })
 @Data
 public class Transaction implements Serializable {
@@ -39,17 +40,8 @@ public class Transaction implements Serializable {
     @Column(name = "totalLit", columnDefinition = "float", nullable = false)
     private float TotalLit;
 
-    @Column(name = "statusCode", columnDefinition = "int(3)")
-    private int StatusCode;
-
-    @Column(name = "customerPhone", columnDefinition = "varchar(12)")
-    private String CustomerPhone;
-
-    @Column(name = "customerCardId", columnDefinition = "varchar(25)")
-    private String CustomerCardId;
-
-    @Column(name = "customerTax", columnDefinition = "varchar(10)")
-    private String CustomerTax;
+    @Column(name = "customerId", columnDefinition = "varchar(50)")
+    private String CustomerId;
 
     @Column(name = "customerName", columnDefinition = "varchar(45)")
     private String CustomerName;
@@ -57,9 +49,22 @@ public class Transaction implements Serializable {
     @Column(name = "note", columnDefinition = "varchar(70)")
     private String Note;
 
-    @Column(name = "exportedAt", columnDefinition = "datetime")
+    @Column(name = "fastId", columnDefinition = "int(1)")
+    private int FastId;
+
+    @Column(name = "vnptId", columnDefinition = "int(1)")
+    private int VnptId;
+
+    @Column(name = "misaId", columnDefinition = "int(1)")
+    private int MisaId;
+
+    @Column(name = "createdAt", columnDefinition = "datetime")
     @Temporal(TemporalType.DATE)
-    private LocalDateTime ExportedAt = LocalDateTime.now();
+    private LocalDateTime CreatedAt = LocalDateTime.now();
+
+    @Column(name = "updatedAt", columnDefinition = "datetime")
+    @Temporal(TemporalType.DATE)
+    private LocalDateTime UpdatedAt = LocalDateTime.now();
 
     @OneToMany(mappedBy = "transaction")
     List<Order> orders = new ArrayList<Order>();
