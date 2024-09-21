@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Entity
 @Table(
-    name = "methodExports"
+    name = "methodexports"
 )
 @Data
 public class MethodExport {

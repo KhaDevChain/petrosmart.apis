@@ -33,13 +33,13 @@ public class Permission implements Serializable{
     @Column(name = "uniqueId", columnDefinition = "varchar(50)")
     private String UniqueId;
 
-    @Column(name = "groupName", columnDefinition = "varchar(70)", nullable = false)
+    @Column(name = "groupName", columnDefinition = "varchar(50)", unique = true, nullable = false)
     private String GroupName;
 
-    @Column(name = "groupPermission", columnDefinition = "varchar(3000)")
+    @Column(name = "groupPermission", columnDefinition = "varchar(300)", nullable = false)
     private String GroupPermission;
 
-    @Column(name = "description", columnDefinition = "varchar(30)", nullable = false)
+    @Column(name = "description", columnDefinition = "varchar(20)", nullable = false)
     private String Description;
 
     @Column(name = "activated", columnDefinition = "boolean")
@@ -50,7 +50,7 @@ public class Permission implements Serializable{
     private Date CreatedAt = new Date();
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "roleId")
+    @JoinColumn(name = "roleId", nullable = false)
     @JsonIgnore
     private Role role;
 }

@@ -19,12 +19,13 @@ ADD UNIQUE INDEX index_rolename_rankest_rankOrther (roleName, rankest, rankOrthe
 -- PERMISSION
 CREATE TABLE permissions (
 	uniqueId varchar(50) primary key not null,
-    groupName varchar(500) unique not null,
-    groupPermission varchar(3000),
-    `Description` varchar(30),
+    groupName varchar(50) unique not null,
+    groupPermission varchar(300) not null,
+    `description` varchar(20),
     createdAt datetime,
     activated boolean default false,
-    roleId varchar(50) not null
+    roleId varchar(50) not null,
+    UNIQUE KEY `group_name_permission` (groupName, groupPermission)
 );
 
 -- FOREIGN KEY ROLE + PERMISSION
@@ -38,9 +39,9 @@ ON UPDATE CASCADE;
 -- chain
 CREATE TABLE chains (
 	uniqueId varchar(50) primary key not null,
-    SKU varchar(50) not null unique,
-    chainName varchar(70) unique not null,
-    director varchar(70),
+    SKU varchar(21) not null unique,
+    chainName varchar(30) unique not null,
+    director varchar(40),
     createdAt datetime,
     activated boolean default false
 );
@@ -52,9 +53,10 @@ ADD UNIQUE INDEX index_sku_chainName_director (SKU, chainName, director);
 -- STATION
 CREATE TABLE stations (
 	uniqueId varchar(50) primary key not null,
-    stationName varchar(70) unique not null,
-    address varchar(255) not null,
-    hotline varchar(15),
+    SKU varchar(15) not null unique,
+    stationName varchar(30) unique not null,
+    `address` varchar(120) not null,
+    hotline varchar(13),
     tax varchar(10) NOT NULL,
     chainId varchar(50) NOT NULL,
     createdAt datetime,
@@ -63,7 +65,7 @@ CREATE TABLE stations (
 
 ALTER TABLE stations
 ADD UNIQUE INDEX index_stationName_tax (stationName, tax),
-ADD UNIQUE INDEX index_stationName_tax_address (stationName, tax, address);
+ADD UNIQUE INDEX index_stationName_tax_address (stationName, tax, sku);
 
 
 -- FOREIGN KEY chain + STATION
@@ -77,14 +79,14 @@ ON UPDATE CASCADE;
 -- EMPLOYEE
 CREATE TABLE employees (
 	uniqueId varchar(50) primary key not null,
-    SKU varchar(50) not null unique,
-    email varchar(70),
+    SKU varchar(21) not null unique,
+    email varchar(35),
     `password` varchar(255) not null,
-    address varchar(100) ,
+    `address` varchar(100) ,
     createdAt datetime,
     activated boolean default false,
     chainId varchar(50) not null,
-    stationId varchar(50),
+    stationId varchar(50) not null,
     roleId varchar(50) not null
 );
 
@@ -113,21 +115,23 @@ ON UPDATE CASCADE;
 -- FUEL
 CREATE TABLE fuels (
 	uniqueId varchar(50) primary key not null,
-	fuelName varchar(50) unique not null,
+    SKU varchar(15) not null unique,
+	fuelName varchar(20) unique not null,
     activated bool default false,
-    createdAt datetime
+    createdAt datetime,
+    UNIQUE(SKU, fuelName)
 );
 
 -- FUEL TANK
 CREATE TABLE fueltanks (
 	uniqueId varchar(50) primary key not null,
-    indexTank varchar(3) not null,
-    totalLit float not null,
-    restLit float not null,
+    sku varchar(4) not null,
+    maximunLit float not null,
+    currentLit float not null,
     createdAt datetime,
     fuelId varchar(50) not null,
     stationId varchar(50) not null,
-    UNIQUE(indexTank, fuelId, stationId)
+    UNIQUE(sku, fuelId, stationId)
 );
 
 ALTER TABLE fueltanks
@@ -158,16 +162,16 @@ FOREIGN KEY (fuelId) REFERENCES fuels(uniqueId)
 ON DELETE CASCADE
 ON UPDATE CASCADE;
 
-CREATE TABLE fuelrectanglars (
+CREATE TABLE fuelrectangulars (
 	uniqueId varchar(50) primary key not null,
     totalAClock varchar(9) not null,
     totalBClock varchar(9) not null,
-    numberPipe int not null,
+    numberPipe int(1) not null,
     createdAt datetime,
     activated boolean default false
 );
 
-ALTER TABLE fuelrectanglars
+ALTER TABLE fuelrectangulars
 ADD UNIQUE INDEX index_totalAClock_totalBClock (totalAClock, totalBClock),
 ADD UNIQUE INDEX index_unique_totalAClock_totalBClock (uniqueId, totalAClock, totalBClock);
 
@@ -177,6 +181,7 @@ CREATE TABLE fuelpipes (
     createdAt datetime,
     activated boolean default false,
     method varchar(5) not null, -- phương thức xuất hóa đơn
+    fuelName varchar(20) not null,
     fuelTankId varchar(50) not null,
     fuelRectangularId varchar(50) not null
 );
@@ -189,16 +194,17 @@ ON UPDATE CASCADE;
 
 ALTER TABLE fuelpipes
 ADD CONSTRAINT fk_fuelpipes_fuelrectanglar
-FOREIGN KEY (fuelRectangularId) REFERENCES fuelrectanglars(uniqueId)
+FOREIGN KEY (fuelRectangularId) REFERENCES fuelrectangulars(uniqueId)
 ON DELETE CASCADE
 ON UPDATE CASCADE;
 
 CREATE TABLE suppliers (
 	uniqueId varchar(50) primary key not null,
-    SKU varchar(50) not null unique,
+    SKU varchar(21) not null unique,
     supplierName varchar(150) not null,
     phone varchar(15),
-    email varchar(70),
+    email varchar(30),
+    tax varchar(10) NOT NULL,
     fuels varchar(255),
     createdAt datetime,
     activated boolean default false,
@@ -210,5 +216,17 @@ CREATE TABLE shiftChanges (
 	uniqueId varchar(50) primary key not null,
     fromTime varchar(12) not null,
     toTime varchar(12) not null,
+    createdAt datetime
+);
+
+CREATE TABLE customers (
+	uniqueId varchar(50) primary key not null,
+    SKU varchar(21) not null unique,
+    customerName varchar(70) not null unique,
+    phone varchar(12) not null unique,
+    `address` varchar(100),
+    tax varchar(10),
+    cardId varchar(50),
+    activated boolean default false,
     createdAt datetime
 );

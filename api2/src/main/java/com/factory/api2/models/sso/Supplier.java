@@ -27,16 +27,19 @@ public class Supplier {
     @Column(name = "uniqueId", columnDefinition = "varchar(50)")
     private String UniqueId;
 
-    @Column(name = "sku", columnDefinition = "varchar(50)", nullable = false, unique = true)
+    @Column(name = "sku", columnDefinition = "varchar(21)", nullable = false, unique = true)
     private String SKU;
 
     @Column(name = "supplierName", columnDefinition = "varchar(150)", nullable = false)
     private String SupplierName;
 
+    @Column(name = "tax", columnDefinition = "varchar(10)", nullable = false)
+    private String Tax;
+
     @Column(name = "phone", columnDefinition = "varchar(15)")
     private String Phone;
 
-    @Column(name = "email", columnDefinition = "varchar(70)")
+    @Column(name = "email", columnDefinition = "varchar(30)")
     private String Email;
 
     // data dạng list <fuelId,fuelName>;<fuelId,fuelName>

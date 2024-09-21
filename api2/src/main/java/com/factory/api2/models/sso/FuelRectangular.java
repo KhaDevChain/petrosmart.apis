@@ -19,7 +19,7 @@ import lombok.Data;
  * trụ xăng
  */
 @Entity
-@Table(name = "fuelrectanglars", uniqueConstraints = {
+@Table(name = "fuelrectangulars", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"totalAClock", "totalBClock"}),
     @UniqueConstraint(columnNames = {"uniqueId", "totalAClock", "totalBClock"}),
 })
@@ -29,13 +29,16 @@ public class FuelRectangular implements Serializable {
     @Column(name = "uniqueId", columnDefinition = "varchar(50)")
     private String UniqueId;
 
+    // số trên đồng hồ total sau
     @Column(name = "totalAClock", columnDefinition = "varchar(9)", nullable = false)
     private String TotalAClock = "000000000";
 
+    // số trên đồng hồ total trước
     @Column(name = "totalBClock", columnDefinition = "varchar(9)", nullable = false)
     private String TotalBClock = "000000000";
 
-    @Column(name = "numberPipe", columnDefinition = "int", nullable = false)
+    // số lượng vòi vơm trên 1 trụ
+    @Column(name = "numberPipe", columnDefinition = "int(1)", nullable = false)
     private int NumberPipe;
 
     @Column(name = "createdAt", columnDefinition = "datetime")

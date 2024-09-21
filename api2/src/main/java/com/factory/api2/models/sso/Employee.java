@@ -33,16 +33,16 @@ public class Employee implements Serializable{
     @Column(name = "uniqueId", columnDefinition = "varchar(50)")
     private String UniqueId;
 
-    @Column(name = "sku", columnDefinition = "varchar(50)", nullable = false, unique = true)
+    @Column(name = "sku", columnDefinition = "varchar(21)", nullable = false, unique = true)
     private String SKU;
 
-    @Column(name = "email", columnDefinition = "varchar(70)")
+    @Column(name = "email", columnDefinition = "varchar(35)")
     private String Email;
 
     @Column(name = "password", columnDefinition = "varchar(255)", nullable = false)
     private String Password;
 
-    @Column(name = "address", columnDefinition = "varchar(100)")
+    @Column(name = "address", columnDefinition = "varchar(120)")
     private String Address;
 
     @Column(name = "activated", columnDefinition = "boolean")
@@ -55,16 +55,16 @@ public class Employee implements Serializable{
     // khóa ngoại
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "chainId")
+    @JoinColumn(name = "chainId", nullable = false)
     @JsonIgnore
     private Chain chain;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "stationId")
+    @JoinColumn(name = "stationId", nullable = false)
     @JsonIgnore
     private Station station;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "roleId")
+    @JoinColumn(name = "roleId", nullable = false)
     private Role role;
 }

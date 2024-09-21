@@ -1,13 +1,10 @@
 package com.factory.api2.models.sso;
 
 import java.util.Date;
-import java.util.List;
-import java.util.ArrayList;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -19,14 +16,14 @@ import lombok.Data;
  */
 @Entity
 @Table(
-    name = "chains",
+    name = "customers",
     uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"sku", "chainName"}),
-        @UniqueConstraint(columnNames = {"sku", "chainName", "director"}),
+        @UniqueConstraint(columnNames = {"sku", "customerName"}),
+        @UniqueConstraint(columnNames = {"sku", "customerName", "phone"}),
     }
 )
 @Data
-public class Chain {
+public class Customer {
     @Id
     @Column(name = "uniqueId", columnDefinition = "varchar(50)")
     private String UniqueId;
@@ -34,11 +31,20 @@ public class Chain {
     @Column(name = "sku", columnDefinition = "varchar(21)", nullable = false, unique = true)
     private String SKU;
 
-    @Column(name = "chainName", columnDefinition = "varchar(30)", nullable = false, unique = true)
-    private String ChainName;
+    @Column(name = "customerName", columnDefinition = "varchar(45)", nullable = false, unique = true)
+    private String CustomerName;
 
-    @Column(name = "director", columnDefinition = "varchar(40)")
-    private String Director;
+    @Column(name = "phone", columnDefinition = "varchar(12)", nullable = false, unique = true)
+    private String Phone;
+
+    @Column(name = "address", columnDefinition = "varchar(100)")
+    private String Address;
+
+    @Column(name = "tax", columnDefinition = "varchar(10)")
+    private String Tax;
+
+    @Column(name = "cardId", columnDefinition = "varchar(50)")
+    private String CardId;
 
     @Column(name = "activated", columnDefinition = "boolean")
     private boolean Activated = false;
@@ -46,8 +52,4 @@ public class Chain {
     @Column(name = "createdAt", columnDefinition = "datetime")
     @Temporal(TemporalType.DATE)
     private Date CreatedAt = new Date();
-
-    // 1 chuỗi sẽ có nhiều trạm
-    @OneToMany(mappedBy = "chain")
-    List<Station> stations = new ArrayList<Station>();
 }
