@@ -36,7 +36,7 @@ public class Permission implements Serializable{
     @Column(name = "groupName", columnDefinition = "varchar(50)", unique = true, nullable = false)
     private String GroupName;
 
-    @Column(name = "groupPermission", columnDefinition = "varchar(3000)", nullable = false)
+    @Column(name = "groupPermission", columnDefinition = "varchar(300)", nullable = false)
     private String GroupPermission;
 
     @Column(name = "description", columnDefinition = "varchar(20)", nullable = false)

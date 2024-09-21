@@ -20,12 +20,12 @@ ADD UNIQUE INDEX index_rolename_rankest_rankOrther (roleName, rankest, rankOrthe
 CREATE TABLE permissions (
 	uniqueId varchar(50) primary key not null,
     groupName varchar(50) unique not null,
-    groupPermission varchar(3000) not null,
+    groupPermission varchar(300) not null,
     `description` varchar(20),
     createdAt datetime,
     activated boolean default false,
     roleId varchar(50) not null,
-    UNIQUE(groupName, groupPermission)
+    UNIQUE KEY `group_name_permission` (groupName, groupPermission)
 );
 
 -- FOREIGN KEY ROLE + PERMISSION
