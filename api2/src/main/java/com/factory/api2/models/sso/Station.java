@@ -46,8 +46,14 @@ public class Station implements Serializable {
     @Column(name = "tax", columnDefinition = "varchar(10)", nullable = false)
     private String Tax;
 
-    // đối tác cung cấp hóa đơn điện tử là ai
-    @Column(name = "partnerEInvoiceId", columnDefinition = "varchar(50)")
+    /**
+     * Đối tác cung cấp hóa đơn điện tử là ai:
+     * FAST
+     * MISA
+     * VNPT
+     * EASY
+     */
+    @Column(name = "partnerEInvoiceId", columnDefinition = "varchar(4)", nullable = false)
     private String PartnerEInvoiceId;
 
     @Column(name = "activated", columnDefinition = "boolean")

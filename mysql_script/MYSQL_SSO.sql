@@ -59,7 +59,7 @@ CREATE TABLE stations (
     hotline varchar(13),
     tax varchar(10) NOT NULL,
     chainId varchar(50) NOT NULL,
-    partnerEInvoiceId varchar(50),
+    partnerEInvoiceId varchar(4) not null,
     createdAt datetime,
     activated boolean default false
 );
