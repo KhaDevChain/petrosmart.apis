@@ -81,8 +81,9 @@ ON UPDATE CASCADE;
 CREATE TABLE employees (
 	uniqueId varchar(50) primary key not null,
     SKU varchar(21) not null unique,
-    email varchar(35),
-    `password` varchar(255) not null,
+    email varchar(35) not null unique,
+    fullName varchar(50) not null,
+    `password` varchar(256) not null,
     `address` varchar(100) ,
     createdAt datetime,
     activated boolean default false,

@@ -25,7 +25,7 @@
 ## QUY LUẬT PHÂN TÁCH
 
     [A]
-    API sẽ được thiết kế riêng trong 1 project và nó sẽ có domain: /apis/v1/project/
+    API sẽ được thiết kế riêng trong 1 project và nó sẽ có domain: /apis/v2/domain/
     API sẽ chỉ lưu thông tin trong database cho einvoice
 
     [B]

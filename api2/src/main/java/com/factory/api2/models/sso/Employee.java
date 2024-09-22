@@ -37,7 +37,10 @@ public class Employee implements Serializable{
     @Column(name = "email", columnDefinition = "varchar(35)", nullable = false, unique = true)
     private String Email;
 
-    @Column(name = "password", columnDefinition = "varchar(255)", nullable = false)
+    @Column(name = "fullName", columnDefinition = "varchar(50)", nullable = false)
+    private String FullName;
+
+    @Column(name = "password", columnDefinition = "varchar(256)", nullable = false)
     private String Password;
 
     @Column(name = "address", columnDefinition = "varchar(120)")
