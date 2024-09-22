@@ -12,8 +12,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import jakarta.persistence.UniqueConstraint;
 import lombok.Data;
 
@@ -60,7 +58,6 @@ public class Station implements Serializable {
     private boolean Activated = false;
 
     @Column(name = "createdAt", columnDefinition = "datetime")
-    @Temporal(TemporalType.DATE)
     private LocalDateTime CreatedAt = LocalDateTime.now();
 
     @ManyToOne(cascade = CascadeType.ALL)

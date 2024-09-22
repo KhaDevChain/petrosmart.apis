@@ -12,8 +12,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import jakarta.persistence.UniqueConstraint;
 import lombok.Data;
 
@@ -59,11 +57,9 @@ public class Transaction implements Serializable {
     private int MisaId;
 
     @Column(name = "createdAt", columnDefinition = "datetime")
-    @Temporal(TemporalType.DATE)
     private LocalDateTime CreatedAt = LocalDateTime.now();
 
     @Column(name = "updatedAt", columnDefinition = "datetime")
-    @Temporal(TemporalType.DATE)
     private LocalDateTime UpdatedAt = LocalDateTime.now();
 
     @OneToMany(mappedBy = "transaction")

@@ -9,8 +9,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import lombok.Data;
 
 @Entity
@@ -56,11 +54,9 @@ public class Invoice implements Serializable {
     private String Note;
 
     @Column(name = "createdAt", columnDefinition = "datetime")
-    @Temporal(TemporalType.DATE)
     private LocalDateTime CreatedAt = LocalDateTime.now();
 
     @Column(name = "updatedAt", columnDefinition = "datetime")
-    @Temporal(TemporalType.DATE)
     private LocalDateTime UpdatedAt = LocalDateTime.now();
 
     @Column(name = "transactionId", nullable = false)

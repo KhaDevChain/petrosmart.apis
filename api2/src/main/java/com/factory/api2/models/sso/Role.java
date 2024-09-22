@@ -1,16 +1,11 @@
 package com.factory.api2.models.sso;
 
-import java.util.List;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import jakarta.persistence.UniqueConstraint;
 import lombok.Data;
 
@@ -40,9 +35,5 @@ public class Role {
     private float RankOrther;
 
     @Column(name = "createdAt", columnDefinition = "datetime")
-    @Temporal(TemporalType.DATE)
     private LocalDateTime CreatedAt = LocalDateTime.now();
-
-    @OneToMany(mappedBy = "role")
-    protected List<Permission> employees = new ArrayList<Permission>();
 }

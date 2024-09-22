@@ -10,8 +10,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import jakarta.persistence.UniqueConstraint;
 import lombok.Data;
 
@@ -42,7 +40,6 @@ public class FuelRectangular implements Serializable {
     private int NumberPipe;
 
     @Column(name = "createdAt", columnDefinition = "datetime")
-    @Temporal(TemporalType.DATE)
     private LocalDateTime CreatedAt = LocalDateTime.now();
 
     @Column(name = "activated", columnDefinition = "boolean")

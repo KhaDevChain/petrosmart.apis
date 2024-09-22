@@ -14,8 +14,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import jakarta.persistence.UniqueConstraint;
 import lombok.Data;
 
@@ -32,12 +30,10 @@ public class Order implements Serializable{
     private Long UniqueId;
 
     @Column(name = "createdAt", columnDefinition = "datetime")
-    @Temporal(TemporalType.DATE)
     private LocalDateTime CreatedAt = LocalDateTime.now();
 
     // update này là cho update phương thức thanh toán, đánh dấu khách hàng
     @Column(name = "updatedAt", columnDefinition = "datetime")
-    @Temporal(TemporalType.DATE)
     private LocalDateTime UpdatedAt = LocalDateTime.now();
 
     // giao dịch của trạm nào
@@ -92,7 +88,6 @@ public class Order implements Serializable{
     private boolean IsExported = false;
 
     @Column(name = "exportedAt", columnDefinition = "datetime")
-    @Temporal(TemporalType.DATE)
     private LocalDateTime ExportedAt = LocalDateTime.now();
 
     @ManyToOne(cascade = CascadeType.ALL)

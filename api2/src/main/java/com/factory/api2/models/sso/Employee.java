@@ -12,8 +12,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import jakarta.persistence.UniqueConstraint;
 import lombok.Data;
 
@@ -36,7 +34,7 @@ public class Employee implements Serializable{
     @Column(name = "sku", columnDefinition = "varchar(21)", nullable = false, unique = true)
     private String SKU;
 
-    @Column(name = "email", columnDefinition = "varchar(35)")
+    @Column(name = "email", columnDefinition = "varchar(35)", nullable = false, unique = true)
     private String Email;
 
     @Column(name = "password", columnDefinition = "varchar(255)", nullable = false)
@@ -49,7 +47,6 @@ public class Employee implements Serializable{
     private boolean Activated = false;
 
     @Column(name = "createdAt", columnDefinition = "datetime")
-    @Temporal(TemporalType.DATE)
     private LocalDateTime CreatedAt = LocalDateTime.now();
 
     // khóa ngoại
