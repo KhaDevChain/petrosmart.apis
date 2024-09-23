@@ -1,12 +1,5 @@
 package com.factory.api2.services.sso;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+public interface FuelPriceService {
 
-import com.factory.api2.repositories.sso.FuelPriceRepository;
-
-@Service
-public class FuelPriceService {
-    @Autowired
-    protected FuelPriceRepository fuelPriceRepository;
 }
