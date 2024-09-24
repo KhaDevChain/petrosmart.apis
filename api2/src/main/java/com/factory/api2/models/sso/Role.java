@@ -14,7 +14,8 @@ import lombok.Data;
  */
 @Entity
 @Table(name = "roles", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"roleName", "rankest"}),
+    @UniqueConstraint(columnNames = {"sku", "roleName"}),
+    @UniqueConstraint(columnNames = {"sku", "roleName", "rankest"}),
     @UniqueConstraint(columnNames = {"roleName", "rankest", "rankOrther"}),
 })
 @Data
@@ -22,6 +23,9 @@ public class Role {
     @Id
     @Column(name = "uniqueId", columnDefinition = "varchar(50)")
     private String UniqueId;
+
+    @Column(name = "sku", columnDefinition = "varchar(20)", unique = true, nullable = false)
+    private String SKU;
 
     @Column(name = "roleName", columnDefinition = "varchar(70)", unique = true, nullable = false)
     private String RoleName;

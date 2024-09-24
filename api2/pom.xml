@@ -12,7 +12,7 @@
 	<artifactId>api2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>api2</name>
-	<description>Demo project for Spring Boot</description>
+	<description>API của dự án PetroSmart</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -67,10 +67,11 @@
 			<version>0.11.2</version>
 		</dependency>
 
-		<dependency>
+		<!-- Chỉ sử dụng webflux chứ không sử dụng MVC của cái này -->
+		<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
+		</dependency> -->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

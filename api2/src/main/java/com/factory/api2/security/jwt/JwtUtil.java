@@ -12,6 +12,7 @@ import com.factory.api2.models.sso.Employee;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
 
@@ -30,11 +31,12 @@ public class JwtUtil {
     private Key key;
 
     /**
-     * Mã hóa key thành hmac thay vì dùng serect trực tiếp
+     * Mã hóa key thành hmac thay vì dùng serect trực tiếp (phải để key mạnh > 256bit)
      */
     @PostConstruct
     public void init() {
-        this.key = Keys.hmacShaKeyFor(secret.getBytes());
+        // this.key = Keys.hmacShaKeyFor(secret.getBytes());
+        this.key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
     }
 
     //#region ĐỌC

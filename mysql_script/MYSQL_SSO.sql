@@ -4,14 +4,16 @@ USE petrolimex_sso;
 -- ROLE
 CREATE TABLE roles (
 	uniqueId varchar(50) primary key not null,
-    roleName varchar(70) UNIQUE NOT NULL,
+    sku varchar(20) UNIQUE NOT NULL,
+    roleName varchar(70) NOT NULL,
     rankest int NOT NULL DEFAULT 1,
     rankOrther float,
     createdAt datetime
 );
 
 ALTER TABLE roles
-ADD UNIQUE INDEX index_rolename_rankest (roleName, rankest),
+ADD UNIQUE INDEX index_rolename_sku (sku, roleName),
+ADD UNIQUE INDEX index_rolename_rankest (sku, roleName, rankest),
 ADD UNIQUE INDEX index_rolename_rankest_rankOrther (roleName, rankest, rankOrther);
 
 
