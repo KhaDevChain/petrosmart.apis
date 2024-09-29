@@ -42,7 +42,9 @@ public class RestaAuthController {
     
     @PostMapping("/signup")
     public Mono<ResponseEntity<SignupRequest>> signup(@RequestBody SignupRequest signup) {
-        
+        if (signup.getUsername().isEmpty() || signup.getPassword().isEmpty()) {
+            return Mono.just(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
+        }
         return null;
     }
     
